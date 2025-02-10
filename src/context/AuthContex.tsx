@@ -8,7 +8,7 @@ interface AuthProviderProps {
     children: ReactNode
 }
 
-//provider
+//register a provider
 export const AuthProvider:React.FC<AuthProviderProps> = ({children}) => {
 
     //states
@@ -53,4 +53,21 @@ export const AuthProvider:React.FC<AuthProviderProps> = ({children}) => {
         //uppdate userinfo to null
         setUser(null);
     }
+
+    return (
+        <AuthContext.Provider value= {{user, login, logout}}>
+            {children}
+        </AuthContext.Provider>
+    )
+}
+
+export const useAuth = () : AuthContextType => {
+
+    const context = useContext(AuthContext);
+
+    if (!context) {
+        throw new Error ('useAuth måste användas inom en AuthProvider');
+    }
+
+    return context;
 }
