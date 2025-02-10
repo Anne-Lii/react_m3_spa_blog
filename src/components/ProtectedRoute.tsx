@@ -8,7 +8,11 @@ interface ProtectedRouteProps {
 
 //controll if user is authorized
 const ProtectedRoute : React.FC<ProtectedRouteProps>= ({children}) => {
-    const {user} = useAuth();
+    const {user, loading} = useAuth();
+
+    if (loading) {
+        return <div>Loading....</div>
+    }
 
     if (!user) {
         return <Navigate to='/login' replace /> //redirect to login if user is not authorized

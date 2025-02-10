@@ -13,15 +13,15 @@ export const AuthProvider:React.FC<AuthProviderProps> = ({children}) => {
 
     //states
     const [user, setUser] = useState <User | null>(null);
+    const [loading, setLoading] = useState(true);
 
     //login user
     const login = async(credentials: LoginCredentials) => {
 
-        const API_URL = 'https://react-api-m3.onrender.com';
 
         //fetch
         try {
-            const res = await fetch(`${API_URL}/login`, {
+            const res = await fetch(`https://react-api-m3.onrender.com/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -62,6 +62,7 @@ export const AuthProvider:React.FC<AuthProviderProps> = ({children}) => {
         const token = localStorage.getItem('token');
 
         if (!token) {
+            setLoading(false);
             return;
         }
 
@@ -70,7 +71,8 @@ export const AuthProvider:React.FC<AuthProviderProps> = ({children}) => {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': 'Bearer' + token
+                    'Authorization': `Bearer ${token}`
+
 
                 }
             });
@@ -78,16 +80,25 @@ export const AuthProvider:React.FC<AuthProviderProps> = ({children}) => {
             if (res.ok) {
                 const data = await res.json();
                 setUser(data.user);
+            } else {
+                localStorage.removeItem('token');
+                setUser(null);
             }
         } catch (error) {
             localStorage.removeItem('token');
             setUser(null);
+        } finally {
+            setLoading(false);
         }
-    }
+    };
+
+    useEffect(() => {
+        checkToken();
+    }, [])
 
     return (
         <AuthContext.Provider value= {{user, login, logout}}>
-            {children}
+            {!loading && children}
         </AuthContext.Provider>
     )
 }
