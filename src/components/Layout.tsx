@@ -1,18 +1,17 @@
-import React from 'react';
-import Navigation from './Nav';
-import { Outlet } from 'react-router-dom';
 
-const Layout: React.FC = () => {
+import { Outlet } from 'react-router-dom';
+import Header from "../components/Header"
+import Footer from "../components/Footer"
+
+const Layout= () => {
   return (
-    <div>
-      <header>
-        <Navigation />
-      </header>
+    <>
+      <Header />
       <main>
         <Outlet /> {/* Child routes renderas här */}
       </main>
-      <footer> &cpoy; 2025 Anne-Lii Hansen</footer>
-    </div>
+      <Footer />
+    </>
   );
 };
 
