@@ -17,9 +17,11 @@ export const AuthProvider:React.FC<AuthProviderProps> = ({children}) => {
     //method to login
     const login = async(credentials: LoginCredentials) => {
 
+        const API_URL = 'https://react-api-m3.onrender.com';
+
         //fetch
         try {
-            const res = await fetch('http://react-api-m3.onrender.com/', {
+            const res = await fetch(`${API_URL}/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

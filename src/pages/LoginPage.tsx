@@ -1,5 +1,6 @@
-import { useState } from "react"
-
+import { use, useState } from "react"
+import { useAuth } from "../context/AuthContex";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
 
@@ -8,9 +9,23 @@ const LoginPage = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
+  const {login} = useAuth();
+  const navigate = useNavigate();
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError('');
+
+
+
+    try {
+      
+      await login({email, password});
+      navigate('/admin');
+        
+    } catch (error) {
+      setError('Inloggning misslyckades, kontrollera email och lösenord')
+    }
   }
 
   return (

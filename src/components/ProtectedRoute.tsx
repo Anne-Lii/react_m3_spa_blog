@@ -6,11 +6,12 @@ interface ProtectedRouteProps {
     children: ReactNode
 }
 
+//controll if user is authorized
 const ProtectedRoute : React.FC<ProtectedRouteProps>= ({children}) => {
     const {user} = useAuth();
 
     if (!user) {
-        return <Navigate to='/login' replace />
+        return <Navigate to='/login' replace /> //redirect to login if user is not authorized
     }
 
     return (
