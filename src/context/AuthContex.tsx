@@ -1,4 +1,4 @@
-import { createContext, useState, useContext, ReactNode } from "react";
+import { createContext, useState, useContext, ReactNode, useEffect } from "react";
 import { User, LoginCredentials, AuthResponse, AuthContextType } from '../types/auth.types';
 
 //create context
@@ -14,7 +14,7 @@ export const AuthProvider:React.FC<AuthProviderProps> = ({children}) => {
     //states
     const [user, setUser] = useState <User | null>(null);
 
-    //method to login
+    //login user
     const login = async(credentials: LoginCredentials) => {
 
         const API_URL = 'https://react-api-m3.onrender.com';
@@ -47,6 +47,7 @@ export const AuthProvider:React.FC<AuthProviderProps> = ({children}) => {
         
     }
 
+    //logout user
     const logout = () => {
 
         //remove token from localstorage
@@ -54,6 +55,34 @@ export const AuthProvider:React.FC<AuthProviderProps> = ({children}) => {
 
         //uppdate userinfo to null
         setUser(null);
+    }
+
+    //validate token
+    const checkToken = async () => {
+        const token = localStorage.getItem('token');
+
+        if (!token) {
+            return;
+        }
+
+        try {
+            const res = await fetch(`https://react-api-m3.onrender.com/validate`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer' + token
+
+                }
+            });
+
+            if (res.ok) {
+                const data = await res.json();
+                setUser(data.user);
+            }
+        } catch (error) {
+            localStorage.removeItem('token');
+            setUser(null);
+        }
     }
 
     return (
