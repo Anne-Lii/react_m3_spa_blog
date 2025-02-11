@@ -9,11 +9,11 @@ const Admin = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const token = localStorage.getItem("token"); // Token finns eftersom sidan är skyddad
+    const token = localStorage.getItem("token");
 
     const postData = {
       title,
-      description: content, // API:t använder "description"
+      description: content,//
     };
 
     try {
@@ -21,7 +21,7 @@ const Admin = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`, // Skickar JWT-token
+          Authorization: `Bearer ${token}`, //Send JWT-token with request
         },
         body: JSON.stringify(postData),
       });
@@ -30,19 +30,19 @@ const Admin = () => {
         throw new Error("Misslyckades att skapa inlägget.");
       }
 
-      setMessage("Inlägget har publicerats! 🎉");
+      setMessage("Inlägget har publicerats.");
       setTitle("");
       setContent("");
 
     } catch (error) {
-      setMessage("Misslyckades att skapa inlägget 😢");
+      setMessage("Misslyckades att skapa inlägget ");
       console.error(error);
     }
   };
 
   return (
     <div>
-      <h1>Hantera bloggen</h1>
+      <h1>Admin</h1>
       <form className="post_form" onSubmit={handleSubmit}>
         <h2>Nytt blogginlägg:</h2>
         <label htmlFor="title">Rubrik:</label>
