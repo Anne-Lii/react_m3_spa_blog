@@ -8,12 +8,16 @@ const Header = () => {
   return (
     <header>
         <ul>
-            <li><NavLink to='/'>Bloggen</NavLink></li>
-            {
-            !user ? 
-              (<li><NavLink to='/login'>Logga in</NavLink></li>) : 
-              (<li><NavLink to="/login" onClick={logout}>Logga ut</NavLink></li>)}
-        </ul>
+          <li><NavLink to="/">Bloggen</NavLink></li>
+            {!user ? (
+              <li><NavLink to="/login">Logga in</NavLink></li>
+            ) : (
+              <>
+                <li><NavLink to="/admin">Admin</NavLink></li>
+                <li><NavLink to="/login" onClick={logout}>Logga ut</NavLink></li>
+              </>
+            )}
+      </ul>
     </header>
   )
 }
