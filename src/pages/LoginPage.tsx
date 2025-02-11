@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useAuth } from "../context/AuthContex";
 import { useNavigate } from "react-router-dom";
+import { Eye, EyeOff } from "lucide-react"; //import icons for showing password
 
 const LoginPage = () => {
 
@@ -8,6 +9,7 @@ const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
   const {login} = useAuth();
   const navigate = useNavigate();
@@ -45,10 +47,28 @@ const LoginPage = () => {
           <div className="forminput">
 
             <label htmlFor="email">E-postadress:</label>
-            <input type="email" id="email" required value={email} onChange={(e) => setEmail(e.target.value)} />
+            <input 
+              type="email" 
+              id="email" 
+              required value={email} 
+              onChange={(e) => setEmail(e.target.value)} 
+            />
 
+            {/*Password with button to show or not to show password */}
             <label htmlFor="password">Lösenord:</label>
-            <input type="text" id="password" required value={password} onChange={(e) => setPassword(e.target.value)} />
+            <input 
+              type={showPassword ? "text" : "password"} 
+              id="password" 
+              required value={password} 
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            
+            <button 
+              type="button" 
+              className="toggle-password" 
+              onClick={() => setShowPassword(!showPassword)}>
+              {showPassword ? <EyeOff /> : <Eye />}
+            </button>
 
             <button type="submit">Logga in</button>
           </div>

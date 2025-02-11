@@ -5,6 +5,7 @@ const Header = () => {
 
   const { user, logout } = useAuth();
 
+  //navigation with logged-in status and not logged-in status
   return (
     <header>
         <ul>
