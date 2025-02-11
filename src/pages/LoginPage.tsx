@@ -1,3 +1,5 @@
+import './LoginPage.css'
+
 import { useState } from "react"
 import { useAuth } from "../context/AuthContex";
 import { useNavigate } from "react-router-dom";
@@ -34,7 +36,7 @@ const LoginPage = () => {
     <div className="container_login">
       <div className="login_inputs">
 
-        <h2>Logga in:</h2>
+        <h1>Logga in</h1>
 
         <form onSubmit={handleSubmit}>
           {error && (
@@ -47,30 +49,36 @@ const LoginPage = () => {
           <div className="forminput">
 
             <label htmlFor="email">E-postadress:</label>
+            <br></br>
             <input 
               type="email" 
               id="email" 
               required value={email} 
               onChange={(e) => setEmail(e.target.value)} 
-            />
+            /><br></br>
 
             {/*Password with button to show or not to show password */}
             <label htmlFor="password">Lösenord:</label>
-            <input 
-              type={showPassword ? "text" : "password"} 
-              id="password" 
-              required value={password} 
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            
-            <button 
-              type="button" 
-              className="toggle-password" 
-              onClick={() => setShowPassword(!showPassword)}>
-              {showPassword ? <EyeOff /> : <Eye />}
-            </button>
-
-            <button type="submit">Logga in</button>
+        
+            <div className="password-inputfield">
+              
+              <input 
+                type={showPassword ? "text" : "password"} 
+                id="password" 
+                required value={password} 
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <br></br>
+              
+              <button 
+                type="button" 
+                className="toggle-password" 
+                onClick={() => setShowPassword(!showPassword)}>
+                {showPassword ? <EyeOff /> : <Eye />}
+              </button>
+            </div>
+           
+            <button type="submit" className='login_btn'>Logga in</button>
           </div>
         </form>
       </div>

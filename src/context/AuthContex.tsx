@@ -72,8 +72,6 @@ export const AuthProvider:React.FC<AuthProviderProps> = ({children}) => {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
-
-
                 }
             });
 

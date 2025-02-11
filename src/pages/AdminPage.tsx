@@ -3,7 +3,7 @@
 const Admin = () => {
   return (
     <div>
-      <h1>Adminsidan</h1>
+      <h1>Hantera bloggen</h1>
     </div>
   )
 }
