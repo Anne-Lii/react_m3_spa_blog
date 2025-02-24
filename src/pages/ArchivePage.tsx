@@ -1,5 +1,5 @@
 import './ArchivePage.css';
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 type Post = {
