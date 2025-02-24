@@ -1,4 +1,5 @@
 import './LoginPage.css'
+import '../App.css'
 
 import { useState } from "react"
 import { useAuth } from "../context/AuthContex";
