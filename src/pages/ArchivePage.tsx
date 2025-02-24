@@ -1,5 +1,5 @@
 import './ArchivePage.css';
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 type Post = {
@@ -47,6 +47,7 @@ const ArchivePage = () => {
 
   return (
     <div className="monthly-posts">
+        <Link to="/">Tillbaka</Link>
         <h1>
             Inlägg{" "}
             {new Date(parseInt(year, 10), parseInt(month, 10) - 1).toLocaleString("sv-SE", {

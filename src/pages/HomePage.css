@@ -39,7 +39,7 @@
     left: 50%;
     width: 60%;
     transform: translateX(-50%);
-    border-bottom: 1px solid grey; 
+    border-bottom: 1px solid lightgrey; 
   }
 
   .blog-post h2{
@@ -47,7 +47,7 @@
   }
 
   .published {
-    color: rgb(163, 163, 163);
+    color: green;
     font-size: 14px;
     padding: 0;
     margin: 0;

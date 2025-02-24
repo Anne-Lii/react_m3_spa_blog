@@ -23,7 +23,7 @@ const PostPage = () => {
           throw new Error("Kunde inte hämta blogginlägget.");
         }
         
-        // Försök läsa svaret som text först
+        //Trying to read the response as text first then JSON
         const text = await response.text();
         const data = text ? JSON.parse(text) : null;
       

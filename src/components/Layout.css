@@ -3,11 +3,11 @@ body {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    color: rgb(255, 159, 175);
+    color: #000;
 }
 
 body a {
-    color: rgb(255, 159, 175);
+    color: #000;
 }
 
 h1 {
