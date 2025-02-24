@@ -7,6 +7,7 @@ const Home = () => {
 
   const [posts, setPosts] = useState<{ _id: string; title: string; description: string ; createdAt: string}[]>([]);
   const [error, setError] = useState("");
+  const [loading, SetLoading] = useState(true);//loading when init
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -20,11 +21,17 @@ const Home = () => {
       } catch (err) {
         setError("Kunde inte ladda inlägg.");
         console.error(err);
+      } finally {
+        SetLoading(false);//stop loading
       }
     };
 
     fetchPosts();
   }, []);
+
+  if (loading) {
+    return <p>Hämtar inlägg...</p>;
+  }
 
 
   return (
