@@ -3,7 +3,7 @@ import './LoginPage.css'
 import { useState } from "react"
 import { useAuth } from "../context/AuthContex";
 import { useNavigate } from "react-router-dom";
-import { Eye, EyeOff } from "lucide-react"; //import icons for showing password
+import { Eye, EyeOff, Loader2 } from "lucide-react"; //import icons for showing password
 
 const LoginPage = () => {
 
@@ -12,6 +12,7 @@ const LoginPage = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, SetLoading] = useState(false);
 
   const {login} = useAuth();
   const navigate = useNavigate();
@@ -19,8 +20,7 @@ const LoginPage = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError('');
-
-
+    SetLoading(true);//Loading...
 
     try {
       
@@ -29,6 +29,8 @@ const LoginPage = () => {
         
     } catch (error) {
       setError('Inloggning misslyckades, kontrollera email och lösenord')
+    }finally {
+      SetLoading(false);//stop loading
     }
   }
 
@@ -57,11 +59,10 @@ const LoginPage = () => {
               onChange={(e) => setEmail(e.target.value)} 
             /><br></br>
 
-            {/*Password with button to show or not to show password */}
+            {/*Password with button to show/hide password */}
             <label htmlFor="password">Lösenord:</label>
         
             <div className="password-inputfield">
-              
               <input 
                 type={showPassword ? "text" : "password"} 
                 id="password" 
@@ -78,7 +79,9 @@ const LoginPage = () => {
               </button>
             </div>
            
-            <button type="submit" className='login_btn'>Logga in</button>
+            <button type="submit" className="login_btn" disabled={isLoading}>
+              {isLoading ? <Loader2 className="spin" /> : "Logga in"}
+            </button>
           </div>
         </form>
       </div>
