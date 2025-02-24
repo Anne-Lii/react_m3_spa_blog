@@ -46,9 +46,6 @@ const Home = () => {
             </li>
           ))}
         </ul>
-       
-        <Archive posts={posts} />
-
       </aside>
 
       <main className="content">
@@ -79,6 +76,9 @@ const Home = () => {
         )}
       </main>
 
+      <aside className="sidebar right">
+      <Archive posts={posts} />
+      </aside> 
       
     </div>
   );
