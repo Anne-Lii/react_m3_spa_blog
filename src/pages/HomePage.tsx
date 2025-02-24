@@ -31,7 +31,7 @@ const Home = () => {
       
       <aside className="sidebar left">
         <h2>Senaste inlägg</h2>
-        <ul>
+        <ul>          
           {posts.slice(0, 3).map((post) => (
             <li key={post._id}>
               <Link to={`/post/${post._id}`}>{post.title}</Link>
@@ -45,21 +45,24 @@ const Home = () => {
         {error ? (
           <p>{error}</p>
         ) : (
-          posts.map((post) => (
+          posts.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+
+          .map((post) => (
             <article key={post._id} className="blog-post">
               <h2>{post.title}</h2>
               <p className="published">
-                Publicerad: {new Date(post.createdAt).toLocaleString("sv-SE", {
-                  year: "numeric",
-                  month: "2-digit",
-                  day: "2-digit",
-                  hour: "2-digit",
-                  minute: "2-digit",
-                  hour12: false,
+                Publicerad:{" "}
+                {new Date(post.createdAt).toLocaleString("sv-SE", {
+                year: "numeric",
+                month: "2-digit",
+                day: "2-digit",
+                hour: "2-digit",
+                minute: "2-digit",
+                hour12: false,
                 })}
               </p>
               <p>{post.description.length > 200 ? post.description.substring(0, 100) + "..." : post.description}</p>
-              <Link to={`/post/${post._id}`}>Läs mer...</Link>
+              <Link to={`/post/${post._id}`}>Läs mer</Link>
             </article>
           ))
         )}

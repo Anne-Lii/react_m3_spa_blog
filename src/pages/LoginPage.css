@@ -2,16 +2,15 @@
     width: 100%;
     max-width: 400px;
     height: auto;
-    border: 2px solid rgb(180, 125, 53);
+    border: 2px solid rgb(255, 159, 175);
     border-radius: 30px;
     margin: 100px auto ;
-    background-color: rgb(211, 165, 104);
 }
 
 .container_login h1{
     text-align: center;
     padding: 50px 0 0 0 ;
-    color: white;
+    color: rgb(255, 159, 175);
     font-size: 36px;
 }
 .forminput {
@@ -24,7 +23,7 @@
 
 .forminput label{
     font-size: 24px;
-    color: white;
+    color: rgb(255, 159, 175);
 }
 
 .forminput input{
@@ -47,7 +46,7 @@
     border-radius: 30px;
     background-color: white;
     margin: 20px 0 0 0;
-    color: rgb(180, 125, 53);
+    color: rgb(255, 159, 175);
     font-size: 24px;
     box-shadow: 10px 10px 10px black;   
     
