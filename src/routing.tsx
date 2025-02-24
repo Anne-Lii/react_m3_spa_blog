@@ -2,6 +2,7 @@ import { createBrowserRouter } from 'react-router-dom';
 
 import HomePage from './pages/HomePage';
 import PostPage from './pages/PostPage';
+import ArchivePage from './pages/ArchivePage';
 import LoginPage from './pages/LoginPage';
 import AdminPage from './pages/AdminPage';
 import ErrorPage from './pages/ErrorPage';
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
                 path: '/post/:id',
                 element: <PostPage/>
             },
+            {
+                path: '/archive/:year/:month',
+                element: <ArchivePage />
+              },
             {
                 path: '/login',
                 element: <LoginPage/>

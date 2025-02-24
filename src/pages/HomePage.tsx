@@ -1,6 +1,7 @@
 import './HomePage.css';
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Archive from '../components/Archive'
 
 const Home = () => {
 
@@ -38,6 +39,9 @@ const Home = () => {
             </li>
           ))}
         </ul>
+       
+        <Archive posts={posts} />
+
       </aside>
 
       <main className="content">
