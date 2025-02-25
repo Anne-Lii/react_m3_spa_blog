@@ -19,4 +19,11 @@
 .edit-mode input, textarea{
     width: 100%;
     margin: 10px 0;
+
+}
+
+.post-page button {
+    padding: 2px 50px;
+    margin: 10px 5px;
+    cursor: pointer;
 }

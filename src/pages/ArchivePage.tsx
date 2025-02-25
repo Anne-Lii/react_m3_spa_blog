@@ -45,6 +45,11 @@ const ArchivePage = () => {
     );
   });
 
+  //sort posts (latest first))
+  filteredPosts.sort(
+    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+  );
+
   return (
     <div className="monthly-posts">
         <Link to="/">Tillbaka</Link>

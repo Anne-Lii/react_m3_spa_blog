@@ -107,7 +107,7 @@ const PostPage = () => {
 
       {isEditing ? (
         <div className="inline-edit">
-          {/* Makes title editable */}
+          {/* Makes title editable inline */}
           <h1 
             ref={titleRef} 
             contentEditable 
@@ -127,7 +127,7 @@ const PostPage = () => {
               hour12: false,
             })}
           </p>
-          {/* Makes description editable */}
+          {/* Makes description editable inline */}
           <p 
             ref={descriptionRef} 
             contentEditable 
@@ -163,8 +163,6 @@ const PostPage = () => {
         </div>
       )}
 
-      <br />
-      <Link to="/">Tillbaka</Link>
     </div>
   );
 };
