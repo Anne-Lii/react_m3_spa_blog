@@ -71,3 +71,10 @@
     color: red;
     margin-bottom: 10px;
 }
+
+/*Layout and styling for smaller screens */
+@media (max-width: 768px) {
+    .post_form {
+        width: 90%;
+    }
+}
