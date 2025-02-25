@@ -1,11 +1,15 @@
 .home-container {
     display: grid;
-    grid-template-columns: 1fr 3fr 1fr; /* 2 columns */
+    grid-template-columns: 1fr 3fr 1fr; /* 3 columns */
     gap: 20px;
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
-    height: 100vh ;
+    height: 100vh;
+  }
+
+  .home-container.loading_message {
+    padding-left: 100px;
   }
   
   .sidebar {
