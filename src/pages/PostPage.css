@@ -32,3 +32,10 @@
     cursor: pointer;
 }
 
+/*Layout and styling for smaller screens */
+@media (max-width: 768px) {
+    .post-page {
+        width: 90%;
+        padding: 50px 0 200px 0;
+    }
+}
