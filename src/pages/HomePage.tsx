@@ -63,12 +63,16 @@ const Home = () => {
       
       <aside className="sidebar left">
         <h2>Senaste inlägg</h2>
-        <ul>          
-          {posts.slice(0, 3).map((post) => (
-            <li key={post._id}>
-              <Link to={`/post/${post._id}`}>{post.title}</Link>
-            </li>
-          ))}
+        <ul>
+          {[...posts]
+            .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+            .slice(0, 3)
+            .map((post) => (
+              <li key={post._id}>
+                <Link to={`/post/${post._id}`}>{post.title}</Link>
+              </li>
+            ))
+          }
         </ul>
       </aside>
 
