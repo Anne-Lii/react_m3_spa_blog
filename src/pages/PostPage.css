@@ -5,3 +5,18 @@
     padding: 100px 0 200px 0;
     text-align: center;
 }
+
+.edit-mode {
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+}
+
+.edit-mode input{
+    width: 100%;
+}
+
+.edit-mode input, textarea{
+    width: 100%;
+    margin: 10px 0;
+}
