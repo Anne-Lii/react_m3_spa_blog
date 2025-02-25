@@ -98,6 +98,7 @@
     margin-bottom: 20px;
   }
 
+  /* Change order to get archive above main content on smaller screens */
   .sidebar.left {
     order: 1;
     padding: 0 10px;

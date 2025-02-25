@@ -50,7 +50,7 @@ const Home = () => {
       if (!response.ok) {
         throw new Error("Misslyckades att radera inlägget.");
       }
-      // Uppdatera listan med inlägg efter radering
+      //update list after removing a post
       setPosts(prevPosts => prevPosts.filter(post => post._id !== postId));
     } catch (err) {
       console.error(err);
@@ -61,6 +61,7 @@ const Home = () => {
   return (
     <div className="home-container">
       
+      {/* Sidebar to the left with latest posts */}
       <aside className="sidebar left">
         <h2>Senaste inlägg</h2>
         <ul>
@@ -76,6 +77,7 @@ const Home = () => {
         </ul>
       </aside>
 
+      {/* Main content, all posts sorted with the latest first */}
       <main className="content">
       <h1>Anne-Lii´s Blogg</h1>
       {loading ? (
@@ -119,9 +121,10 @@ const Home = () => {
       )}
     </main>
 
-      <aside className="sidebar right">
+    {/* Archive with year and months */}
+    <aside className="sidebar right">
       <Archive posts={posts} />
-      </aside> 
+    </aside> 
       
     </div>
   );
