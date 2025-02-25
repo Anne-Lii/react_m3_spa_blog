@@ -12,3 +12,11 @@ footer {
     font-size: 24px;
     z-index: 1;
 }
+
+/*Layout and styling for smaller screens */
+@media (max-width: 768px) {
+    footer {
+        padding: 20px 0 0 0;
+        font-size: 16px;
+    }
+}
