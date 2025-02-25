@@ -15,7 +15,7 @@ const Header = () => {
               <li><NavLink to="/login">Logga in</NavLink></li>
             ) : (
               <>
-                <li><NavLink to="/admin">Admin</NavLink></li>
+                <li><NavLink to="/admin">Nytt inlägg</NavLink></li>
                 <li><NavLink to="/login" onClick={logout}>Logga ut</NavLink></li>
               </>
             )}

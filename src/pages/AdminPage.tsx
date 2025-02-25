@@ -7,17 +7,38 @@ const Admin = () => {
   const [content, setContent] = useState("");
   const [showPopup, setShowPopup] = useState(false);
   const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
 
   const navigate = useNavigate();
 
+  //validate input
+  const validateForm = () => {
+    if (title.trim().length < 3) {
+      setError("Rubriken måste vara minst 3 tecken lång och får inte bara vara mellanslag.");
+      return false;
+    }
+    if (content.trim().length < 3) {
+      setError("Texten måste vara minst 3 tecken lång och får inte bara vara mellanslag.");
+      return false;
+    }
+    //if ok, clear message
+    setError("");
+    return true;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    //check form
+    if (!validateForm()) {
+      return;
+    }
 
     const token = localStorage.getItem("token");
 
     const postData = {
       title,
-      description: content,//
+      description: content,
     };
 
     try {
@@ -38,7 +59,6 @@ const Admin = () => {
       setShowPopup(true);
       setTitle("");
       setContent("");
-    
 
     } catch (error) {
       setMessage("Misslyckades att skapa inlägget ");
@@ -57,6 +77,10 @@ const Admin = () => {
       <h1>Admin</h1>
       <form className="post_form" onSubmit={handleSubmit}>
         <h2>Nytt blogginlägg:</h2>
+
+        {/* Show error messages if there is any */}
+        {error && <p className="error-message">{error}</p>}
+
         <label htmlFor="title">Rubrik:</label>
         <br />
         <input
@@ -64,7 +88,6 @@ const Admin = () => {
           id="title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          required
         />
         <br />
 
@@ -74,7 +97,6 @@ const Admin = () => {
           id="content"
           value={content}
           onChange={(e) => setContent(e.target.value)}
-          required
         ></textarea>
         <br />
 

@@ -106,7 +106,7 @@ const Home = () => {
                     ? post.description.substring(0, 100) + "..."
                     : post.description}
                 </p>
-                <Link to={`/post/${post._id}`}>Läs mer</Link>
+                <Link to={`/post/${post._id}`} className='link_readmore'>Läs mer...</Link>
                 <br></br>
                 {isLoggedIn && (<button onClick={()=> deletePost(post._id)}>Radera</button>)}
               </article>

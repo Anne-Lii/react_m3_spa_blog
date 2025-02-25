@@ -9,11 +9,17 @@
   }
 
   .home-container h1 {
-    color: pink;
+    color: rgb(253, 169, 183);
     font-size: 52px;
     font-family: "Mystery Quest", serif;
     font-weight: 500;
   }
+
+  .home-container h2 {
+    color: rgb(253, 169, 183);
+    
+  }
+
   .home-container.loading_message {
     padding-left: 100px;
   }
@@ -53,7 +59,7 @@
     left: 50%;
     width: 60%;
     transform: translateX(-50%);
-    border-bottom: 1px solid pink; 
+    border-bottom: 1px solid rgb(253, 169, 183);
   }
 
   .blog-post h2{
@@ -71,5 +77,11 @@
     padding: 2px 50px;
     margin-top: 10px;
     cursor: pointer;
+  }
+
+  .link_readmore {
+    color: rgb(253, 169, 183);
+    font-size: 20px;
+    text-decoration: none;
   }
   

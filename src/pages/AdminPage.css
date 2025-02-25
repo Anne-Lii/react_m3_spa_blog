@@ -19,6 +19,22 @@
     height: 200px;
 }
 
+.post_form button {
+    width: 101%;
+    padding: 5px 0;
+    background-color: rgb(78, 138, 78);
+    border-radius: 5px;
+    margin-top: 5px;
+    color: white;
+    font-size: 18px;
+    box-shadow: 5px 5px 10px grey;
+}
+
+.post_form button:hover{
+    cursor: pointer;
+    box-shadow: none;
+}
+
 .popup-overlay {
     border: 1px solid grey ;
     border-radius: 5px;
@@ -39,4 +55,9 @@
     margin: auto;
     padding: 5px;
     box-shadow: 3px 3px 5px grey;
+}
+
+.error-message {
+    color: red;
+    margin-bottom: 10px;
 }
