@@ -1,5 +1,5 @@
 import './PostPage.css';
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate} from "react-router-dom";
 import { useState, useEffect } from "react";
 
 type PostType = { 
@@ -14,6 +14,9 @@ const PostPage = () => {
   const { id } = useParams<{ id: string }>();
   const [post, setPost] = useState<PostType | null>(null);
   const [error, setError] = useState("");
+
+  const navigate = useNavigate();
+  const isLoggedIn = !!localStorage.getItem("token");//check if user is logged in
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -37,6 +40,27 @@ const PostPage = () => {
 
     fetchPost();
   }, [id]);
+
+    //function to delete a post
+    const deletePost = async () => {
+      const token = localStorage.getItem("token");
+      if (!token) return;
+      try {
+        const response = await fetch(`https://react-api-m3.onrender.com/post/${id}`, {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+        if (!response.ok) {
+          throw new Error("Kunde inte radera inlägget.");
+        }
+        //navigate back to homepage after removing post
+        navigate("/");
+      } catch (err) {
+        console.error(err);
+      }
+    };
 
   if (error) {
     return <p>{error}</p>;
@@ -64,6 +88,10 @@ const PostPage = () => {
       </p>
       <p>{post.description}</p>
       <Link to="/">Tillbaka</Link>
+      <br></br>
+      {isLoggedIn && (
+        <button onClick={deletePost}>Radera</button>
+      )}
     </div>
   );
 }
