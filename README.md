@@ -1,50 +1,73 @@
-# React + TypeScript + Vite
+# React - Bloggplats
+Anne-Lii Hansen anha2324@student.miun.se
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Detta är en Single Page Application (SPA) byggd med React, Typescript och Vite. 
+Applikationen fungerar som en bloggplattform där användaren kan skapa, läsa, uppdatera och radera blogginlägg. Autentisering hanteras med JWT för att skydda vissa endpoints.
 
-Currently, two official plugins are available:
+## Funktioner
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Publik startsida där alla blogginlägg visas i nedkortad version, de tre senaste Nyheterna samt Arkiv.
+- Enskilda blogginlägg kan visas på egna sidor
+- Användarautentisering med JWT
+- Skyddade rutter för att hantera blogginlägg
+- CRUD-operationer för blogginlägg
+- Responsiv design
 
-## Expanding the ESLint configuration
+## Teknologier
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- React
+- TypeScript
+- Vite
+- React Router
+- Axios
+- JWT-autentisering
+- CSS
 
-- Configure the top-level `parserOptions` property like this:
+## Installation och körning
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+Klona repository från Github:
+```sh 
+git clone https://github.com/Anne-Lii/react_m3_spa_blog.git
+ ```
+
+Gå in i projektmappen: 
+```sh 
+cd react_m3_spa_blog
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+Installera beroenden:
+```sh 
+npm install 
 ```
+
+Starta utvecklingsserver:
+```sh 
+npm run dev
+```
+
+Nu körs applikationen lokalt på localhost.
+
+## API
+Denna applikation kommunicerar med ett backend-API som hanterar autentisering och blogginlägg och det finns publicerat på: https://react-api-m3.onrender.com/ 
+
+Repository för APIet på Github:
+```sh 
+git clone https://github.com/Anne-Lii/react_api_m3.git
+```
+
+## Endpoints
+
+### Autentisering
+POST /auth/register:  Registrera användare
+POST /auth/login:     Logga in och få en JSON Web Token - JWT
+
+### Användare
+
+### Blogginlägg
+GET /posts:           Hämta alla blogginlägg
+GET /posts/id:        Hämta ett specifikt blogginlägg med id
+POST /posts:          Skapa ett nytt blogginlägg (kräver autentisering)
+PUT /posts/id:        Uppdatera ett specifikt blogginlägg med id (kräver autentisering)
+DELETE /posts/id:     Ta bort ett specifikt blogginlägg med id (kräver autentisering)
+
+**Skyddade endpoints kräver en Authorization: Bearer <token> i headers.**
