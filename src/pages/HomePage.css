@@ -43,8 +43,8 @@
 }
 .content {
   text-align: center;
-  padding: 20px;
-  padding: 30px;    
+  padding: 20px 20px 200px 20px;
+      
 }
 
 .blog-post {
@@ -110,7 +110,7 @@
   }
   
   .content {
-    padding: 10px;
+    padding: 10px 10px 200px 10px;
     order: 3;
   }
 
